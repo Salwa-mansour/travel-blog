@@ -133,7 +133,7 @@ export default function PostDetail() {
                 </div>
               </header>
 
-               <aside  className="weather-quiery">
+               <aside  className="post-aside">
                 
 
                 
