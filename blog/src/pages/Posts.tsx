@@ -167,10 +167,7 @@ client
             <article key={post._id} className="item-card">
               <figure className="post-img">
                 {post.mainImage && post.mainImage.asset && (
-                  // <img
-                  //   src={urlFor(post.mainImage).width(600).url()}
-                  //   alt={post.title}
-                  // />
+                
                   <ProgressiveImage imageObject={post.mainImage} alt={post.title} width='600' />
                 )}
               </figure>

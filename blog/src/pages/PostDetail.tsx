@@ -2,9 +2,9 @@ import { useEffect, useState,useRef } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { PortableText } from '@portabletext/react'
 import { client } from '../sanity/sanityClient'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faList} from '@fortawesome/free-solid-svg-icons'
+
 import { Post } from './Posts'
+import Sidebar from '../components/Sidebar'
 import { customPortableTextComponents } from '../components/PortableTextComponents'
 
 import { urlFor } from '../utils/urlFor'
@@ -133,11 +133,7 @@ export default function PostDetail() {
                 </div>
               </header>
 
-               <aside  className="post-aside">
-                
-
-                
-              </aside>
+              <Sidebar/>
 
               <div  className="post">
                   <div className='text-container'>

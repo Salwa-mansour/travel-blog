@@ -32,6 +32,7 @@
     width: 100%;
     display: grid;
     align-items: start;
+    
 }
 .main-img{
     position: relative;
@@ -91,23 +92,223 @@ figure img{
     width: 30px;
     height: 30px;
 }
-
+.posts-container {
+    padding-bottom: 1rem;
+}
    .related-posts-grid{
     display: flex;
     padding: 1rem;
     gap: 1rem;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
+   overflow-x: auto;
     color: black;
    }
    .related-posts-grid .item-card{
       height: auto;
+      min-width: 300px;
    }
    .item-card .post-title,
    .item-card .location{
     margin-bottom: .5rem;
    }
+   /* sidebar */
+   /* Sidebar Container */
+.blog-sidebar {
+  width: 100%;
+ 
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+ 
+  color: #27272a;
+      align-items: center;
+    padding-block: 2rem;
+}
+
+/* Individual Widget Card */
+.sidebar-widget {
+ 
+ 
+  width: 90%;
+}
+.widget-content{
+     background: #ffffff76;
+  border: 1px solid #e4e4e7; 
+  border-radius: 12px;
+  padding: var(--post-page-margin);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+.widget-title {
+     padding: var(--post-page-margin);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #18181b;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+ 
+  letter-spacing: -0.01em;
+}
+
+/* Latest Posts Widget */
+.latest-posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.post-item {
+  display: flex;
+  gap: 12px;
+  text-decoration: none;
+ 
+  align-items: flex-start;
+  transition: opacity 0.2s ease;
+border-bottom: 1px solid #80808030;
+}
+.post-item:last-child{
+    border: none;
+}
+.post-item:hover {
+  opacity: 0.8;
+}
+
+.post-thumbnail {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background-color: #f4f4f5;
+}
+
+.post-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.post-date {
+  font-size: 0.75rem;
+  color: #71717a;
+  margin-bottom: 4px;
+}
+
+.post-title {
+  
+  font-weight: 500;
+  color: #18181b;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.post-desc{
+    font-size: .9rem;
+    display: -webkit-box;
+  -webkit-line-clamp: 2;        /* Limits text to 2 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;             /* Hides the overflowing text */
+  text-overflow: ellipsis;      
+}
+/* Tags Widget */
+.tags-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag-badge {
+  background-color: #f4f4f5;
+  color: #3f3f46;
+  font-size: 0.8rem;
+  padding: 6px 12px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.tag-badge:hover {
+  background-color: #e4e4e7;
+  color: #18181b;
+  border-color: #d4d4d8;
+}
+
+/* Newsletter Widget */
+.newsletter-desc {
+  font-size: 0.85rem;
+  color: #71717a;
+  margin-bottom: 14px;
+  line-height: 1.4;
+}
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.newsletter-input {
+  padding: 10px 14px;
+  border: 1px solid #d4d4d8;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.newsletter-input:focus {
+  border-color: #6366f1;
+}
+
+.newsletter-btn {
+  background-color: #18181b;
+  color: #ffffff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.newsletter-btn:hover {
+  background-color: #27272a;
+}
+    .posts-container .item-card{
+    width: 300px;
+    }
+    .single-page-content{
+        
+        --side-space: 22.75rem;
+        --post-page-margin:1rem;
+        grid-template-columns:1fr;
+        grid-template-areas: 
+        " contentHeader contentHeader"
+        " content content"
+        "sideContent sideContent"
+    }
+    .post-header{
+        grid-area: contentHeader;
+    }
+    .post-header__data{
+        padding-left:calc(var(--side-space) + var(--post-page-margin)) ;
+    }
+    .blog-sidebar{
+        grid-area: sideContent;
+    
+
+        position: relative;
+    }
+    .post{
+        grid-area: content;
+    }
+
+  
 @media (max-width:866px){
   
   .post-header__data {
@@ -119,6 +320,7 @@ figure img{
 @media (min-width: 867px) {
    
     .single-page-content {
+       
         --side-space: 22.75rem;
         --post-page-margin: 1rem;
         grid-template-columns: var(--side-space) 1fr;
@@ -134,7 +336,7 @@ figure img{
     }
     
     /* Allow GSAP to manage positioning freely without strict height constraints */
-    .post-aside {
+    .blog-sidebar {
         grid-area: sideContent;
         align-self: start;          /* Crucial: lets the grid item stick cleanly to the top */
         position: relative;
@@ -145,40 +347,9 @@ figure img{
     }
    
  
-    .post-aside.is-stuck {
+    .blog-sidebar.is-stuck {
     position: sticky;
     top: 20px; /* Sticks 20px from the top of the viewport */
     z-index: 10;
   }
 }
-
-  
-   
-    
-    .posts-container .item-card{
-    width: 300px;
-    }
-    .single-page-content{
-        --side-space: 22.75rem;
-        --post-page-margin:1rem;
-        grid-template-columns:var(--side-space) 1fr;
-       grid-template-areas: 
-        "contentHeader contentHeader "
-        "sideContent    content    "
-    }
-    .post-header{
-        grid-area: contentHeader;
-    }
-    .post-header__data{
-        padding-left:calc(var(--side-space) + var(--post-page-margin)) ;
-    }
-    .post-aside{
-        grid-area: sideContent;
-        height: calc(100vh - 2rem); 
-        position: relative;
-    }
-    .post{
-        grid-area: content;
-    }
-
-  
